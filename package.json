@@ -1,0 +1,23 @@
+{
+  "name": "iadvize-vdm",
+  "version": "0.1.0",
+  "description": "Use to get post from viedemerde.fr",
+  "main": "recorder.js",
+  "dependencies": {
+    "request": "^2.79.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MaitreManuel/iAdvice_Project.git"
+  },
+  "author": "Trystan Eveno",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MaitreManuel/iAdvice_Project/issues"
+  },
+  "homepage": "https://github.com/MaitreManuel/iAdvice_Project#readme"
+}
