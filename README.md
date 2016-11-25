@@ -1,4 +1,4 @@
-# iAdvice VDM
+# iAdvize VDM
 
 Ce repository contient ma réponse à l'énoncé du test à l'embauche d'iAdvize.
 
