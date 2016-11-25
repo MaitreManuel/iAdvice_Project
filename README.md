@@ -14,7 +14,7 @@ npm install
 
 # Lancer la commande suivante:
 npm start # Lance l'extraction de données sur VDM, puis le serveur
-node get-vdm.js # permet d'extraire les VDM sans passer par l'API
+node get-vdm.js # Permet d'extraire les VDM sans passer par l'API
 npm test # Lance les tests
 ```
 
