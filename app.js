@@ -14,13 +14,28 @@ app.get('/api/posts', function(req, res){
     if(Object.keys(req.query).length === 0) {
         res.sendFile(path.normalize(__dirname +'/store/vdm.json'));
     } else {
+        var postFind = [];
+
         if(req.query.author.length > 0) {
             obj.posts.forEach(function(element) {
                 if(req.query.author === element.author) {
-                    res.send(element);
+                    postFind.push(element);
                 }
             });
-        }
+        } //else if(req.query.from.length > 0 && req.query.to.length > 0) {
+            // var dateFrom = new Date(req.query.from).valueOf(),
+            //     dateTo   = new Date(req.query.to).valueOf();
+            //
+            // console.log(req.query.from);
+            // console.log(req.query.to);
+            // obj.posts.forEach(function(element) {
+            //     // if(element.date.substring(0, 10) > dateFrom) {
+            //     //     postFind.push(element);
+            //     // }
+            //     console.log(element.date.substring(0, 9));
+            // });
+        // }
+        res.send(postFind);
     }
 });
 
