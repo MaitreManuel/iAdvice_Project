@@ -4,6 +4,7 @@
   "description": "Use to get post from viedemerde.fr",
   "main": "recorder.js",
   "dependencies": {
+    "cheerio": "^0.22.0",
     "request": "^2.79.0"
   },
   "devDependencies": {},
