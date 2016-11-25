@@ -9,9 +9,6 @@ var request = require('request');
 *  division, 200 / 12 = 16 with a remainder of 8.    *
 *  So we take 16 pages and after we can take off     *
 *  posts (ex: 208 - (208 - 200) = 200)               *
-*  We start to page 1 to 16 and don't get the page   *
-*  0 because it's not the same page compared to      *
-*  others.                                           *
 *****************************************************/
 
 var allPost = [];
