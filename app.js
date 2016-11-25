@@ -41,6 +41,7 @@ app.get('/api/posts', function(req, res){
 
 var server = app.listen(3000, function () {
     var port = server.address().port;
+    console.log('Server listening port 3000 Go to http://localhost:3000');
 });
 
 module.exports = server;
