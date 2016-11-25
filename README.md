@@ -9,7 +9,7 @@ Ce repository contient :
 ##Utilisation
 ```bash
 git clone https://github.com/MaitreManuel/iAdvize_VDM.git
-cd iAdvice_Project
+cd iAdvize_VDM
 npm install
 
 #Lancer la commande suivante:
