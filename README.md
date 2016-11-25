@@ -12,8 +12,10 @@ git clone https://github.com/MaitreManuel/iAdvize_VDM.git
 cd iAdvize_VDM
 npm install
 
-#Lancer la commande suivante:
+# Lancer la commande suivante:
 npm start # Lance l'extraction de données sur VDM, puis le serveur
+node get-vdm.js # permet d'extraire les VDM sans passer par l'API
+npm test # Lance les tests
 ```
 
 ##Stockage des données
@@ -36,5 +38,3 @@ Ce test a pour but de mettre en oeuvre une application permettant 2 choses :
 * Vous devez tester unitairement votre code
 * Vous devez mettre à disposition votre code via Github
 * Vous ne devez pas utiliser l’API du site “Vie de Merde” pour récuperer les informations
-
-Merci à pjerem où son README m'a aidé à éditer le mien ! https://github.com/pjerem

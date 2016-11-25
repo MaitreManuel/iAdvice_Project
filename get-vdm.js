@@ -13,6 +13,7 @@ var request = require('request');
 *  0 because it's not the same page compared to      *
 *  others.                                           *
 *****************************************************/
+
 var allPost = [];
 var nbPost = 200;
 var nbPage = 16;
