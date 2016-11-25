@@ -4,7 +4,7 @@ Ce repository contient ma réponse à l'énoncé du test à l'embauche d'iAdvize
 
 Ce repository contient :
 - Un serveur utilisant ExpressJS et servant l'API demandée.
-- Un script ```bash extract-vdm.js``` créé par moi-même dont l'utilitée est de récupérer les données demandées.
+- Un script ```extract-vdm.js``` créé par moi-même dont l'utilitée est de récupérer les données demandées.
 
 ##Enoncé du test
 iAdvize m'a demandé de réaliser ce texte dans le langage de mon choix.
