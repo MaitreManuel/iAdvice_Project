@@ -8,7 +8,7 @@ Ce repository contient :
 
 ##Utilisation
 ```bash
-git clone https://github.com/MaitreManuel/iAdvice_Project.git
+git clone https://github.com/MaitreManuel/iAdvize_VDM.git
 cd iAdvice_Project
 npm install
 
