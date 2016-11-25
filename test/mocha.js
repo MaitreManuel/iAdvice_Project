@@ -1,0 +1,1 @@
+/* Not enough time to do test */

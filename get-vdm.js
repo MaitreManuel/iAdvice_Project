@@ -95,7 +95,7 @@ module.export = {
                     "count": allPost.length
                 };
                 //we create a JSON file to store all datas
-                fs.writeFile('output.json', JSON.stringify(toJsonAllPost, null, 4), function(err){
+                fs.writeFile('./store/vdm.json', JSON.stringify(toJsonAllPost, null, 4), function(err){
                     console.log('File successfully written! - Check your project directory for the output.json file');
                     console.log('End extracting VDM');
                 });

@@ -4,7 +4,20 @@ Ce repository contient ma réponse à l'énoncé du test à l'embauche d'iAdvize
 
 Ce repository contient :
 - Un serveur utilisant ExpressJS et servant l'API demandée.
-- Un script ```extract-vdm.js``` créé par moi-même dont l'utilitée est de récupérer les données demandées.
+- Un script ```get-vdm.js``` créé par moi-même dont l'utilitée est de récupérer les données demandées.
+
+##Utilisation
+```bash
+git clone https://github.com/MaitreManuel/iAdvice_Project.git
+cd iAdvice_Project
+npm install
+
+#Lancer la commande suivante:
+npm start # Lance l'extraction de données sur VDM, puis le serveur
+```
+
+##Stockage des données
+Les posts extraits du site http://viedemerde.fr sont stockés dans un fichier JSON dans ```./store/vdm.json```
 
 ##Enoncé du test
 iAdvize m'a demandé de réaliser ce test dans le langage de mon choix.
