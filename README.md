@@ -38,3 +38,7 @@ Ce test a pour but de mettre en oeuvre une application permettant 2 choses :
 * Vous devez tester unitairement votre code
 * Vous devez mettre à disposition votre code via Github
 * Vous ne devez pas utiliser l’API du site “Vie de Merde” pour récuperer les informations
+
+## Licence
+
+<a href="https://choosealicense.com/licenses/mit/#" target="_blank">MIT</a>
