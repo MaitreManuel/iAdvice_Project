@@ -2,70 +2,89 @@ var fs = require('fs');
 var cheerio = require('cheerio');
 var request = require('request');
 
-
-/*****************************************************
-*  We need the last 200 posts of www.viedemerde.fr.  *
-*  We can get around 12 posts per page, in Euclidean *
-*  division, 200 / 12 = 16 with a remainder of 8.    *
-*  So we take 16 pages and after we can take off     *
-*  posts (ex: 208 - (208 - 200) = 200)               *
-*****************************************************/
-
 var allPost = [];
 var nbPost = 200;
-var nbPage = 16;
+var nbPage = 22;
 
 console.log("Start extracting VDM");
 module.export = {
     //we need a recursive function due to asynchronus work of JavaScript
     extract: (function findAllPosts(i) {
-        request('http://www.viedemerde.fr/?page='+ i +'#top', function (error, response, html) {
+        request('http://www.viedemerde.fr/?page='+ i, function (error, response, html) {
             if (!error && response.statusCode == 200) {
-            var $ = cheerio.load(html);
-                //the text is in a tag with a class <a class="fmllink"> in the HTML page
-                $('a.fmllink').each(function(i, element) {
-                    //string where there are author and date of a VDM post
-                    //this = <a class="fmllink">
-                    //Output: Anonymous  / 04/07/2015 à 08:25 / Japon (Tokyo)
-                    var getDateAndAuthor = $(this).parent().next().next().children().next().text();
-                    //sometimes, there is a random post with a picture to make a
-                    //word game or a post about a famous people, the datas format
-                    //is different, so we need to check if the attribute href of
-                    //the tag <a class="fmllink">, contains "photo", or an
-                    //empty date and/or author, and exclude the post
-                    if(this.attribs.href.substring(1, 6) !== 'photo' && getDateAndAuthor.length > 0) {
-                        //text of VDM post
-                        var content = element.children[0].data;
-                        //take off the start of the string we don't use
-                        getDateAndAuthor = getDateAndAuthor.replace('Vécue par ', '');
-                        //we split the string
-                        //Output: [ 'Anonymous ', '04/07/2015 à 08:25', 'Japon (Tokyo)' ]
-                        getDateAndAuthor = getDateAndAuthor.split(' / ');
-                        //now we can extract the date and the author
-                        var author = getDateAndAuthor[0];
-                        var date = getDateAndAuthor[1];
-                        //we take off the space at the end of an author (sometimes there is one)
-                        if(author[author.length - 1] === ' ') {
-                            author = author.substring(0, author.length - 1);
-                        }
-                        //now we need to format the date like this: "YYYY-MM-DD HH:MM:SS
-                        // we can take off the part of the string " à ", 2 * "/" and ":"
-                        date = date.replace(' à ', '');
-                        date = date.replace('/', '');
-                        date = date.replace('/', '');
-                        date = date.replace(':', '');
-                        //now we slice piece by piece and reassemble each part
-                        var dd = date.substring(0, 2);
-                        var mm = date.substring(2, 4);
-                        var yyyy = date.substring(4, 8);
-                        var hh = date.substring(8, 10);
-                        var min = date.substring(10, 12);
-                        var ss = '00';
-                        date = yyyy +'-'+ mm +'-'+ dd +' '+ hh +':'+ min +':'+ ss;
+                var $ = cheerio.load(html);
+                var month = {
+                    'janvier': '01',
+                    'février': '02',
+                    'mars': '03',
+                    'avril': '04',
+                    'mai': '05',
+                    'juin': '06',
+                    'juillet': '07',
+                    'août': '08',
+                    'septembre': '09',
+                    'octobre': '10',
+                    'novembre': '11',
+                    'décembre': '12'
+                };
 
+                //see archi.html to see structure of one post
+                $('.art-panel.col-xs-12').each(function(i, element) {
+                    var tmp,
+                        isAuthor = false,
+                        isDate = false,
+                        isMessage = false,
+                        author = element.children[1].children[1].children[5],
+                        date = element.children[1].children[1].children[5],
+                        message = element.children[1].children[1].children[3].children[1].children[1];
+
+                    if(author && date && message) {
+                        if((author.type == 'tag' && author.name == 'div') && (date.type == 'tag' && date.name == 'div')) {
+                            if(date.children[2]) {
+                                if(date.children[2].type == 'text') {
+                                    date = date.children[2].data;
+                                    date = date.replace(' /\n', '');
+                                    date = date.replace(' /\n', ' ');
+                                    date = date.split(' ');
+                                    date[2] = month[date[2]];
+                                    date = date[3] +'-'+ date[2] +'-'+ date[1] +' '+ date[4] +':00';
+                                    isDate = true;
+                                }
+                                if(author.children[0].type == 'text') {
+                                    author = author.children[0].data;
+                                    author = author.replace('Par ', '');
+                                    author = author.replace(' - ', '');
+                                    author = author.replace('\n', '');
+                                    isAuthor = true;
+                                }
+                            } else {
+                                tmp = author.children[0].data;
+                                tmp = tmp.split('/');
+                                author = tmp[0];
+                                author = author.replace('Par ', '');
+                                author = author.replace('\n', '');
+                                date = tmp[1];
+                                date = date.replace(' /\n', '');
+                                date = date.replace(' /\n', ' ');
+                                date = date.split(' ');
+                                date[2] = month[date[2]];
+                                date = date[3] +'-'+ date[2] +'-'+ date[1] +' '+ date[4] +':00';
+                                date = date.replace('\n', '');
+                                isDate = true;
+                                isAuthor = true;
+                            }
+                        }
+                        if((message.type == 'tag' && message.name == 'a')) {
+                            if(message.children[0].type == 'text') {
+                                message = message.children[0].data;
+                                isMessage = true;
+                            }
+                        }
+                    }
+                    if(isAuthor && isDate && isMessage) {
                         var post = {
                             "id": allPost.length + 1,
-                            "content": content,
+                            "content": message,
                             "date": date,
                             "author": author
                         };
@@ -77,8 +96,8 @@ module.export = {
                 console.log('** ERROR **\n'+ error +"\n");
             }
 
-            i += 1;
             console.log("Page", i, allPost.length, "extracted posts");
+            i += 1;
 
             if(i <= nbPage) {
                 findAllPosts(i);
@@ -99,5 +118,5 @@ module.export = {
                 });
             }
         });
-    })(0)
+    })(1)
 };
