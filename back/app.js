@@ -40,6 +40,16 @@ app.get('/api/posts', function(req, res){
             } else {
                 console.log('* ERROR * - Parameter date-from is after date-to');
             }
+        } else if(From && !to) {
+            var dateFrom = new Date(req.query.from).valueOf();
+
+            obj.posts.forEach(function(element) {
+                var dateElem = new Date(element.date).valueOf();
+
+                if(dateElem >= dateFrom) {
+                    postFind.push(element);
+                }
+            });
         }
         res.send(postFind);
     }
