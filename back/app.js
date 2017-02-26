@@ -5,7 +5,7 @@ var getvdm = require('./get-vdm');
 var app = express();
 
 app.get('/', function (req, res) {
-    res.status(200).send('Server ok **** Go to http://localhost:3000/api/posts');
+    res.status(200).send('Server On');
 });
 
 app.get('/api/posts', function(req, res){

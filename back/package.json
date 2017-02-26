@@ -1,4 +1,6 @@
 {
+  "author": "Trystan Eveno",
+  "license": "MIT",
   "name": "iadvize-vdm",
   "version": "0.1.0",
   "description": "Use to get post from viedemerde.fr",
