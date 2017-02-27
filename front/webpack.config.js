@@ -1,19 +1,14 @@
-var path = require('path');
-var webpack = require('webpack');
-
 module.exports = {
-  entry: './src/application.js',
-  output: { path: __dirname + '/build', filename: 'application.js' },
+  entry: './index.js',
+
+  output: {
+    filename: 'bundle.js',
+    publicPath: ''
+  },
+
   module: {
     loaders: [
-      {
-        test: /.js?$/,
-        loader: 'babel-loader',
-        exclude: /node_modules/,
-        query: {
-          presets: ['react']
-        }
-      }
+      { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader?presets[]=es2015&presets[]=react' }
     ]
-  },
-};
+  }
+}

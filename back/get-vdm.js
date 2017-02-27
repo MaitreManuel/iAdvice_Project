@@ -77,6 +77,7 @@ module.export = {
                         if((message.type == 'tag' && message.name == 'a')) {
                             if(message.children[0].type == 'text') {
                                 message = message.children[0].data;
+                                message = message.replace('\n', '');
                                 isMessage = true;
                             }
                         }
