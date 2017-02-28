@@ -19,6 +19,7 @@ npm start # Lance le client
 ```
 Go [here](http://localhost:8080/api/posts)
 
+Dans le dossier /back
 ```bash
 node get-vdm.js # Permet d'extraire les VDM sans passer par l'API
 npm test # Lance les tests
