@@ -4,16 +4,21 @@ Ce repository contient ma réponse à l'énoncé du test à l'embauche d'iAdvize
 
 Ce repository contient :
 - Un serveur utilisant ExpressJS et servant l'API demandée.
+- Un Web-client pour afficher les réponses du serveur.
 - Un script ```get-vdm.js``` créé par moi-même dont l'utilitée est de récupérer les données demandées.
 
 ## Utilisation
 ```bash
 git clone https://github.com/MaitreManuel/iAdvize_VDM.git
-cd iAdvize_VDM
+cd iAdvize_VDM/back/
 npm install
-
-# Lancer la commande suivante:
 npm start # Lance l'extraction de données sur VDM, puis le serveur
+cd ../front/
+npm install
+npm start # Lance le client
+
+Go [here](http://localhost:8080/api/posts)
+
 node get-vdm.js # Permet d'extraire les VDM sans passer par l'API
 npm test # Lance les tests
 ```

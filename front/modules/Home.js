@@ -6,7 +6,6 @@ var Posts = require("./Posts.js");
 
 var Home = React.createClass({
     render: function () {
-        var posts = [];
         return (
             <div id="Home">
                 <Header />
@@ -14,9 +13,8 @@ var Home = React.createClass({
                 <section id="main-content">
                     <section className="wrapper site-min-height">
                         <h3><i className="fa fa-comment-o"></i> Posts</h3>
-                            <Posts />
                         <div className="row mt">
-                            {posts}
+                            <Posts />
                         </div>
                     </section>
                 </section>

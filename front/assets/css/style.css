@@ -15,6 +15,10 @@ Premium: http://www.gridgum.com
     right: 15px;
 }
 
+.search:focus {
+    outline: none;
+}
+
 /* BASIC THEME CONFIGURATION */
 body {
     color: #797979;

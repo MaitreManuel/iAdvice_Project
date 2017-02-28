@@ -18,26 +18,6 @@ var NavBar = React.createClass({
                                 <span>Posts</span>
                             </NavLink>
                         </li>
-                        <li className="mt">
-                            <span><i className="fa fa-search"></i> Rechercher :</span>
-                        </li>
-                        <li className="mt">
-                            <div className="col-sm-12">
-                                <input type="text" placeholder="id" className="form-control round-form"/>
-                                <button type="submit" className="btn btn-theme round-form search"><i className="fa fa-search"></i></button>
-                            </div>
-                        </li>
-                        <li className="mt centered">
-                            <div className="col-sm-12">
-                                <span>ou</span>
-                            </div>
-                        </li>
-                        <li className="mt">
-                            <div className="col-sm-12">
-                                <input type="text" placeholder="Auteur" className="form-control round-form"/>
-                                <button type="submit" className="btn btn-theme round-form search"><i className="fa fa-search"></i></button>
-                            </div>
-                        </li>
                     </ul>
                 </div>
             </aside>
