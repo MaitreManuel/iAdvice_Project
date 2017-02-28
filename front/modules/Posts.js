@@ -29,6 +29,10 @@ var Posts = React.createClass({
         this.setState({to: to});
     },
 
+    clearInput: function () {
+        document.getElementsByTagName("input").innerHTML = "";
+    },
+
     componentDidMount: function() {
         this.getPosts();
     },
@@ -66,7 +70,7 @@ var Posts = React.createClass({
                 <div className="col-lg-12 col-md-12 col-sm-12 mb" key={'postID12'}>
                     <div className="weather-2 pn">
                         <div className="weather-2-header">
-                            <div className="row">
+                            <div className="row" style={{marginTop: 5 +'px'}}>
                                 <div className="col-sm-6 col-xs-6">
                                     <p>{author}</p>
                                 </div>
@@ -119,7 +123,7 @@ var Posts = React.createClass({
                     <div className="col-lg-6 col-md-6 col-sm-6 mb" key={'post'+ i}>
                         <div className="weather-2 pn">
                             <div className="weather-2-header">
-                                <div className="row">
+                                <div className="row" style={{marginTop: 5 +'px'}}>
                                     <div className="col-sm-6 col-xs-6">
                                         <p>{author}</p>
                                     </div>
@@ -183,7 +187,7 @@ var Posts = React.createClass({
                     <div className="col-lg-6 col-md-6 col-sm-6 mb" key={'post'+ i}>
                         <div className="weather-2 pn">
                             <div className="weather-2-header">
-                                <div className="row">
+                                <div className="row" style={{marginTop: 5 +'px'}}>
                                     <div className="col-sm-6 col-xs-6">
                                         <p>{author}</p>
                                     </div>
@@ -236,7 +240,7 @@ var Posts = React.createClass({
                     <div className="col-lg-6 col-md-6 col-sm-6 mb" key={'post'+ i}>
                         <div className="weather-2 pn">
                             <div className="weather-2-header">
-                                <div className="row">
+                                <div className="row" style={{marginTop: 5 +'px'}}>
                                     <div className="col-sm-6 col-xs-6">
                                         <p>{author}</p>
                                     </div>
@@ -269,11 +273,11 @@ var Posts = React.createClass({
                 <div>
                     <div className="col-lg-12 col-md-12 col-sm-12 mb">
                         <div className="col-sm-6">
-                            <input type="number" placeholder="id" onInput={this.updateID} className="form-control round-form"/>
+                            <input name="id" type="number" placeholder="id" onFocus={this.clearInput} onInput={this.updateID} className="form-control round-form"/>
                             <button type="submit" onClick={this.getByID} className="btn btn-theme round-form search"><i className="fa fa-search"></i></button>
                         </div>
                         <div className="col-sm-6">
-                            <input type="text" placeholder="Auteur" onInput={this.updateAuthor} className="form-control round-form"/>
+                            <input name="author" type="text" placeholder="Auteur" onFocus={this.clearInput} onInput={this.updateAuthor} className="form-control round-form"/>
                             <button type="submit" onClick={this.getByAuthor} className="btn btn-theme round-form search"><i className="fa fa-search"></i></button>
                         </div>
                     </div>
@@ -283,18 +287,18 @@ var Posts = React.createClass({
                     <div className="col-lg-12 col-md-12 col-sm-12 mb">
                         <div className="col-sm-6">
                             <span>Depuis</span>
-                            <input type="date" onInput={this.updateFrom} className="form-control round-form"/>
+                            <input name="from" type="date" placeholder="yyyy-mm-dd" onInput={this.updateFrom} className="form-control round-form"/>
                         </div>
                         <div className="col-sm-6">
                             <span>Jusqu&#39;à</span>
                         </div>
                         <div className="col-sm-6">
-                            <input type="date" onInput={this.updateTo} className="form-control round-form" style={{paddingRight: 40 +'px'}}/>
+                            <input name="to" type="date" placeholder="yyyy-mm-dd" onInput={this.updateTo} className="form-control round-form" style={{paddingRight: 40 +'px'}}/>
                             <button type="submit" onClick={this.getByDate} className="btn btn-theme round-form search"><i className="fa fa-search"></i></button>
                         </div>
                     </div>
                 </div>
-                <button type="submit" onClick={this.getPosts} className="btn btn-theme" style={{marginLeft: 15 +"px"}}>Recharger tous les messages</button>
+                <button type="submit" onClick={this.getPosts} className="btn btn-theme" style={{marginLeft: 30 +"px"}}>Recharger tous les messages</button>
                 <div className="wrapper">
                     {posts}
                 </div>

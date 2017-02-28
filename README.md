@@ -17,7 +17,7 @@ cd ../front/
 npm install
 npm start # Lance le client
 ```
-Go [here](http://localhost:8080/api/posts)
+Go [here](http://localhost:8080)
 
 Dans le dossier /back
 ```bash

@@ -13,7 +13,7 @@ var NavBar = React.createClass({
                         <h5 className="centered">Trystan Eveno</h5>
 
                         <li className="mt">
-                            <NavLink to="/api/posts">
+                            <NavLink to="/">
                                 <i className="fa fa-comment-o"></i>
                                 <span>Posts</span>
                             </NavLink>

@@ -57,7 +57,11 @@ app.get('/api/posts', function(req, res){
                 }
             });
         }
-        res.send(postFind);
+        if(postFind.length < 1) {
+            res.status(400).send("Error: no matches, maybe you ask something that doesn't exist");
+        } else {
+            res.status(200).send(postFind);
+        }
     }
 });
 
