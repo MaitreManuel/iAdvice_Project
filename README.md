@@ -16,9 +16,10 @@ npm start # Lance l'extraction de données sur VDM, puis le serveur
 cd ../front/
 npm install
 npm start # Lance le client
-
+```
 Go [here](http://localhost:8080/api/posts)
 
+```bash
 node get-vdm.js # Permet d'extraire les VDM sans passer par l'API
 npm test # Lance les tests
 ```
