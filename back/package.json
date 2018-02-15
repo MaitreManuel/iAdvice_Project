@@ -4,7 +4,7 @@
   "name": "iadvize-vdm",
   "version": "0.1.0",
   "description": "Use to get post from viedemerde.fr",
-  "main": "recorder.js",
+  "main": "app.js",
   "dependencies": {
     "cheerio": "^0.22.0",
     "express": "^4.14.0",
@@ -22,8 +22,6 @@
     "type": "git",
     "url": "git+https://github.com/MaitreManuel/iAdvize_VDM.git"
   },
-  "author": "Trystan Eveno",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/MaitreManuel/iAdvize_VDM/issues"
   },
